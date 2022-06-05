@@ -1,4 +1,6 @@
 Apartment Managment System:
+
+
 This is a fullstack web application.So the problem statement here is to manage ,clarify and  resolve all people's complaints in the apartment.
 Apartment managment system is developed in order to maintain,clarify and resolve the issues faced by the people in the 
 apartment.Whenever a resident posts a new complaint his details should be added to the database and if needed it must be edited and also deleted when it is resolved.
