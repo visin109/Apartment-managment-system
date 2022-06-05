@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Tell your issues here</title>
+    </head>
+<body>
+    <div class="jumbotron" style=background-color:brown;text-align:left;font-size:smaller>
+        <h1>New complaints</h1>
+    </div>
+    <div class="container">
+        <div class="section">
+
+            <!-- <h2>Raise your complaint here to get it resolved</h2> -->
+            <form method="post",action='{{url_for("add")}}'>
+                <label for="complaint id"><b>complaint id</b></label>
+                <input  name="complaint_id" type="number" placeholder="complaint id" id="complaint id" required>
+                <label for="registration name"><b>Registration name</b></label>
+                <input name="registered_name" type="text" placeholder="registration name" id="registration name" required>
+                <label for="block number"><b>Block number</b></label>
+                <input name="block_no" type="number"  placeholder="block number" id="block number" required>
+                <label for="floor_number"><b>floor number</b></label>
+                <input name="floor_no" type="number"  placeholder="floor number" id="floor_number"required>
+                <label for="door number"><b>door number</b></label>
+                <input name="door_no" type="number"  placeholder="door number" id="door number"required>
+                <label for="type of issue"><b>Issue typer</b></label>
+                <input name="type_of_issue" type="text" placeholder="what type of issue" id="type of issue" required>
+                <label for="complaint description"><b>complaint description</b></label>
+                <input name="complaint_description" type="text" placeholder="Explain about your issue" id="complaint description" required>
+                <input type='submit' value='Add complaint details'>
+
+
+            </form>
+
+            <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+        </div>
+</body>

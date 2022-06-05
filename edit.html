@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+    <title>Tell your issues here</title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+    <div class="jumbotron" style=background-color:brown;text-align:left;font-size:smaller;padding-bottom:0px;padding-top:5px>
+        <h1>Edit resident details</h1>
+    </div>
+    <div class="container">
+        <div class="section">
+
+            <!-- <h2>Raise your complaint here to get it resolved</h2> -->
+            <form method="post" action='{{url_for("edit",complaint_id=complaint_details.complaint_id)}}'>
+                <label for="registration name"><b>Registration name</b></label>
+                <input name="registered_name" type="text" placeholder="registration name" id="registration name"  value='{{complaint_details.registered_name}}' required>
+                <label for="block number"><b>Block number</b></label>
+                <input name="block_no" type="number"  placeholder="block number" id="block number"  value='{{complaint_details.block_no}}' required>
+                <label for="floor_number"><b>floor number</b></label>
+                <input name="floor_no" type="number"  placeholder="floor number" id="floor_number" value='{{complaint_details.floor_no}}' required>
+                <label for="door number"><b>door number</b></label>
+                <input name="door_no" type="number"  placeholder="door number" id="door number" value='{{complaint_details.door_no}}' required>
+                <label for="type of issue"><b>Issue type</b></label>
+                <input name="type_of_issue" type="text" placeholder="what type of issue" id="type of issue" value='{{complaint_details.type_of_issue}}'required>
+                <label for="complaint description"><b>complaint description</b></label>
+                <input name="complaint_description" type="text" placeholder="Explain about your issue" id="complaint description" value='{{complaint_details.complaint_description}}' required>
+                <input type='submit' value='update'>
+
+            </form>
+        </div>
+</body>

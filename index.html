@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Apartment Complaints </title>
+    </head>
+    <body background-image="https://www.phillyaptrentals.com/wp-content/uploads/2020/12/apartment-building-what-makes-good-apartment-building-scaled.jpg" backgound-repeat-no repeat>
+        <div class="jumbotron">
+            <h1>Apartment Complaints </h1>
+        </div>
+        <div  class="container">
+            <div class="section">
+    
+                <h2>Apartment issues Manangement</h2>
+                <button style="background-color:green"><a style="color: white" href='{{url_for("add")}}' class='btn btn-success '>Add Complaints</a></button>
+            <div>
+                <input type="text"  placeholder="Search by registered_name or complaint_id, or use all to see all the data" name="registered_name">
+                <button type="submit"><a href='{{url_for("search")}}'>Search</a></button>
+            </div>
+
+            <div class="section">
+
+                <h2>complaint details</h2>
+                <table style="background-color: whitesmoke;">
+                    <thead>
+                        <tr>
+                            <!-- <th>select</th> -->
+                            <th>Complaint id</th>
+                            <th>Registered name</th>
+                            <th>block number</th>
+                            <th>floor number</th>
+                            <th>door no</th>
+                            <th>type of issue</th>
+                            <th>complaint_description</th>
+                            <th>edit</th>
+                            <th>delete</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in complaint_details %}
+                        <tr>
+                            <!-- <td><input type="checkbox" name="mycheck"></td> -->
+
+                            <td>{{x.complaint_id}}</td>
+                            <td>{{x.registered_name}}</td>
+                            <td>{{x.block_no}}</td>
+                            <td>{{x.floor_no}}</td>
+                            <td>{{x.door_no}}</td>
+                            <td>{{x.type_of_issue}}</td>
+                            <td>{{x.complaint_description}}</td>
+                            <td><button style="background-color: green"><a style="color: white" href='{{url_for("edit",complaint_id=x.complaint_id)}}' >Edit</a></button></td>
+                            <td><button style="background-color: red"><a style="color: white" href='{{url_for("delete",complaint_id=x.complaint_id)}}'onclick='return confirm("Are You Sure")'>Delete </button></a></td>
+                            
+                
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html
