@@ -93,21 +93,31 @@ def delete(complaint_id):
 # def base():
 #     form=SearchForm()
 #     return dict(form=form)
-@app.route('/search.html', methods=['GET','POST'])
+@app.route('/search.html', methods=['GET'])
 def search():
-    # if request.method == "POST":
-        # complaint_id = request.form.get['complaint_id']
-    registered_name=request.form['registered_name']
-        # search by author or book
-    con=sql.connect("birthdays.db")
-    cur=con.cursor()
-    # data=None
-    if request.method=="POST":
-        cur.execute("SELECT complaint_id,registered_name from complaint_details WHERE registered_name LIKE %s",(registered_name))
-        con.commit()
-        data = cur.fetchall()
-        return render_template('search.html', complaint_details=data)
-    return render_template('search.html')
+     
+    keywords = request.args.get('keywords')
+
+    # Connect to the SQLite database
+    conn = sql.connect('birthdays.db')
+    c = conn.cursor()
+
+    # Execute the search query
+    c.execute("SELECT * FROM complaint_details WHERE "
+              "complaint_id LIKE ? OR "
+              "registered_name LIKE ? OR "
+              "block_no LIKE ? OR "
+              "floor_no LIKE ? OR "
+              "door_no LIKE ? OR "
+              "type_of_issue LIKE ? OR "
+              "complaint_description LIKE ?",
+              ('%'+keywords+'%', '%'+keywords+'%', '%'+keywords+'%', '%'+keywords+'%', '%'+keywords+'%',
+               '%'+keywords+'%', '%'+keywords+'%'))
+    results = c.fetchall()
+
+    # Close the database connection
+    conn.close()
+    return render_template('search.html', results=results)
         # all in the search box will return all the tuples
         # if len(data) == 0 and registered_name == 'all': 
         #     cur.execute("SELECT complaint_id,registered_name from complaint_details")
