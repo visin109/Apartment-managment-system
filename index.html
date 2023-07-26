@@ -4,45 +4,50 @@
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="/static/styles.css" rel="stylesheet">
-        <title>Apartment Complaints </title>
-    </head>
+        <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+        
+    </head >
     <body background-image="https://www.phillyaptrentals.com/wp-content/uploads/2020/12/apartment-building-what-makes-good-apartment-building-scaled.jpg" backgound-repeat-no repeat>
-        <div class="jumbotron">
-            <h1>Apartment Complaints </h1>
+        <div class="jumbotron"></div>
         </div>
         <div  class="container">
             <div class="section">
-    
                 <h2>Apartment issues Manangement</h2>
                 <button style="background-color:green"><a style="color: white" href='{{url_for("add")}}' class='btn btn-success '>Add Complaints</a></button>
-            <div>
-                <input type="text"  placeholder="Search by registered_name or complaint_id, or use all to see all the data" name="registered_name">
-                <button type="submit"><a href='{{url_for("search")}}'>Search</a></button>
-            </div>
+            <h3>Search</h3>
+            <form action="{{ url_for('search') }}" method="GET">
+                <input type="text" name="keywords" placeholder="Enter keywords">
+                <input type="submit" value="Search">
+            </form>
+        
+            
 
             <div class="section">
 
                 <h2>complaint details</h2>
                 <table style="background-color: whitesmoke;">
                     <thead>
+
+                        <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <!-- <th>select</th> -->
                             <th>Complaint id</th>
                             <th>Registered name</th>
                             <th>block number</th>
                             <th>floor number</th>
                             <th>door no</th>
-                            <th>type of issue</th>
+                            <th>type of issue</th>  
                             <th>complaint_description</th>
                             <th>edit</th>
-                            <th>delete</th>
+                            <th>delete</th> 
 
                         </tr>
                     </thead>
                     <tbody>
                         {% for x in complaint_details %}
                         <tr>
-                            <!-- <td><input type="checkbox" name="mycheck"></td> -->
 
                             <td>{{x.complaint_id}}</td>
                             <td>{{x.registered_name}}</td>
