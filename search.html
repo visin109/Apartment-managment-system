@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-  
+<head>
+    <meta name="viewport" content="width=device-width, initial-  
         scale=1">
-        <link rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-
-        awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/static/index.css">
-    </head>
-    <body>
-        <h1><center>Search people</center></h1>
-        <form class="example" method="post" action='{{url_for("search")}}'
-         style="margin:auto;max-width:600px">
-            <input type="text" placeholder="Search by  registered_name" name="registered_name">
-            <button type="submit">Search<i class="fa fa-search"></i>
-            </button>
-        </form>
-        <p></p>
-        <center>
-        {% for x in complaint_details %}
-            <tr>
-                <td> {{x.complaint_id}}</td>
-                <td>{{x.registered_name}}</td>
-                </br>
-            </tr>
-        {% endfor %}
-        </center>
-    </body>
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-
+    awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/static/styles.css" rel="stylesheet" >
+    <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Search Results</title>
+    <!-- <form action="{{ url_for('search') }}" method="GET">
+        <input type="text" name="keywords" placeholder="Enter keywords">
+        <input type="submit" value="Search">
+    </form> -->
+   
+</head>
+<body>
+    <div class="search_font">
+        <h1>Search results</h1>
+    </div>
+    <div class="search_table">
+        <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>Complaint id</th>
+                    <th>Registered name</th>
+                    <th>block number</th>
+                    <th>floor number</th>
+                    <th>door no</th>
+                    <th>type of issue</th>
+                    <th>complaint_description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>{{ row[5] }}</td>
+                    <td>{{ row[6] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>
 </html>
